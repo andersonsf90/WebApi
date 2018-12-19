@@ -30,7 +30,9 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
+            services.AddDbContext<DataContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("DataContext"), builder =>
+                    builder.MigrationsAssembly("WebApi")));
             services.AddMvc();
             services.AddAutoMapper();
 
