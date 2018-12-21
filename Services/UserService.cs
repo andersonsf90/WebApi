@@ -28,8 +28,6 @@ namespace WebApi.Services
         //private readonly AppSettings _appSettings;
         private readonly AppSettings _appSettings;
 
-
-
         public UserService(DataContext context)
         {
             _context = context;
