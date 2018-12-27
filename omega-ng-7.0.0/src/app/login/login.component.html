@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>PrimeNG Omega - Login</title>
+
+<!-- Layout CSS -->
+<link rel="stylesheet" type="text/css" href="/src/layout/layout/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/src/layout/primeng.min.css">
+</head>
+
+<!-- 3. Display the application -->
+
+<body class="login-body">
+<div id="login-wrapper">	
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div id="login-wrapper">
+        <img src="/src/layout/images/login-logo.png">
+
+        <div id="login-container">
+            <span class="title">Omega</span>
+
+            <div class="ui-g ui-fluid">
+			<div class="ui-g-12">
+                <div class="form-group">
+				<input type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget" formControlName="username" placeholder="Username"
+				[ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+				<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+					<div *ngIf="f.username.errors.required">Username is required</div>
+				</div>
+				</div>
+			</div>
+			<div class="ui-g-12">
+				<div class="form-group">
+					<input type="password" class="ui-inputtext ui-corner-all ui-state-default ui-widget" formControlName="password" placeholder="Password"
+					[ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+					<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+						<div *ngIf="f.password.errors.required">Password is required</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui-g-12">
+				<div class="form-group">
+					<button [disabled]="loading" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+						<span class="ui-button-icon-left ui-c fa fa-fw ui-icon-person"></span>
+                        <span class="ui-button-text ui-c">Sign In</span>
+					</button>
+					<img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+					<a routerLink="/register" class="btn btn-link">Register</a>
+				</div>
+            </div>
+			</div>
+        </div>
+
+        <div class="login-footer">PrimeNG Omega</div>
+	</div>
+</form>
+</div>
+</body>
+</html>

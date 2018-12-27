@@ -2,6 +2,11 @@ import {Component, AfterViewInit, OnDestroy, ViewChild, Renderer2} from '@angula
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import {ScrollPanel} from 'primeng/primeng';
 
+import { Router } from '@angular/router';
+
+import { AuthenticationService } from './_services';
+import { User } from './_models';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -19,6 +24,8 @@ import {ScrollPanel} from 'primeng/primeng';
     ]
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
+
+    currentUser: User;
 
     public menuInactiveDesktop: boolean;
 
@@ -38,7 +45,13 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     topMenuButtonClick: boolean;
 
-    constructor(public renderer: Renderer2) {}
+    constructor(
+        public renderer: Renderer2,
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
 
     ngAfterViewInit() {
         setTimeout(() => {this.scrollerViewChild.moveBar(); }, 100);
@@ -121,5 +134,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         if (this.documentClickListener) {
             this.documentClickListener();
         }
+    }
+
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
     }
 }

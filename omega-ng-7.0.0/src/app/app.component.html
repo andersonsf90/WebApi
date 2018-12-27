@@ -1,49 +1,64 @@
 <div class="wrapper" [ngClass]="{'sidebar-inactive-l':menuInactiveDesktop, 'sidebar-active-m':menuActiveMobile}">
-    <div class="topbar clearfix">
-        <a id="omega-menu-button" href="#" (click)="toggleMenu($event)">
-            <span class="fa fa-bars"></span>
-        </a>
-        <span class="topbar-title"></span>
-        <a id="options-menu-button" href="#" (click)="toggleTopMenu($event)">
-            <span class="fa fa-ellipsis-h"></span>
-        </a>
-        <div id="topbar-icons" class="animated" [ngClass]="{'topbar-icons-visible flipInX':topMenuActive,'flipOutX':topMenuLeaving}">
-             <a href="#">
-                <span class="topbar-item-text">Settings</span>
-                <span class="topbar-icon fa fa-gear"></span>
+    <nav *ngIf="currentUser">
+        <div class="topbar clearfix">
+            <a id="omega-menu-button" href="#" (click)="toggleMenu($event)">
+                <span class="fa fa-bars"></span>
             </a>
-            <a href="#">
-                <span class="topbar-item-text">User</span>
-                <span class="topbar-icon fa fa-user"></span>
+            <span class="topbar-title"></span>
+            <a id="options-menu-button" href="#" (click)="toggleTopMenu($event)">
+                <span class="fa fa-ellipsis-h"></span>
             </a>
+            <div id="topbar-icons" class="animated" [ngClass]="{'topbar-icons-visible flipInX':topMenuActive,'flipOutX':topMenuLeaving}">
+                 <a href="#">
+                    <span class="topbar-item-text">Settings</span>
+                    <span class="topbar-icon fa fa-gear"></span>
+                </a>
+                <a href="#">
+                    <span class="topbar-item-text">User</span>
+                    <span class="topbar-icon fa fa-user"></span>
+                </a>
+            </div>
+        </div>
+        <div class="sidebar" (click)="onMenuClick()">
+            <p-scrollPanel #scroller [style]="{height: '100%'}">
+                <div class="sidebar-scroll-content">
+                    <div class="logo">
+                        <img src="assets/layout/images/logo.png" alt="" width="113">
+                    </div>
+                    <div class="profile">
+                        <img src="assets/layout/images/profile.png" alt="" />
+                        <a id="profile-button" href="#" (click)="toggleProfile($event)">
+                            <span *ngIf="currentUser"></span>
+                            <i class="fa fa-fw fa-cog"></i>
+                        </a>
+                        <ul [@submenu]="profileActive ? 'visible' : 'hidden'">
+                            <li><a href="#"><i class="fa fa-fw fa-sliders"></i><span>Account</span></a></li>
+                            <li><a (click)="logout()" style="cursor: pointer"><i class="fa fa-fw fa-sign-out"></i><span>Logout</span></a></li>
+                        </ul>
+                    </div>
+                    <app-menu></app-menu>
+                </div>
+            </p-scrollPanel>
+        </div>
+    </nav>
+    <!--/*<div class="main">
+        <router-outlet></router-outlet>
+    </div>-->
+    <!-- main app container -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <alert></alert>
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="sidebar" (click)="onMenuClick()">
-        <p-scrollPanel #scroller [style]="{height: '100%'}">
-            <div class="sidebar-scroll-content">
-                <div class="logo">
-                    <img src="assets/layout/images/logo.png" alt="" width="113">
-                </div>
-                <div class="profile">
-                    <img src="assets/layout/images/profile.png" alt="" />
-                    <a id="profile-button" href="#" (click)="toggleProfile($event)">
-                        <span class="username">Peggy Olson</span>
-                        <i class="fa fa-fw fa-cog"></i>
-                    </a>
-                    <ul [@submenu]="profileActive ? 'visible' : 'hidden'">
-                        <li><a href="#"><i class="fa fa-fw fa-sliders"></i><span>Account</span></a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-sign-out"></i><span>Logout</span></a></li>
-                    </ul>
-                </div>
-                <app-menu></app-menu>
-            </div>
-        </p-scrollPanel>
-    </div>
-    <div class="main">
-        <router-outlet></router-outlet>
-    </div>
-    <div class="footer">
-        <img src="assets/layout/images/logo-colored.png" alt="" width="32">
-        <span class="footer-text">PrimeNG Omega Theme and Layout</span>
-    </div>
+    <nav *ngIf="currentUser">
+        <div class="footer">
+            <img src="assets/layout/images/logo-colored.png" alt="" width="32">
+            <span class="footer-text">PrimeNG Omega Theme and Layout</span>
+        </div>
+    </nav>
 </div>

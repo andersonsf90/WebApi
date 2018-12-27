@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutes} from './app.routes';
+import { ReactiveFormsModule }    from '@angular/forms';
 
 import { AccordionModule } from 'primeng/accordion';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -75,7 +76,15 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
 import {AppComponent} from './app.component';
 import {AppMenuComponent, AppSubMenuComponent} from './app.menu.component';
-import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
+
+import { AlertComponent } from './_components';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { HomeComponent } from './home';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
+
+
+/*import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
 import {FormsDemoComponent} from './demo/view/formsdemo.component';
 import {DataDemoComponent} from './demo/view/datademo.component';
 import {EmptyDemoComponent} from './demo/view/emptydemo.component';
@@ -86,7 +95,7 @@ import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
 import {CarService} from './demo/service/carservice';
 import {CountryService} from './demo/service/countryservice';
 import {EventService} from './demo/service/eventservice';
-import {NodeService} from './demo/service/nodeservice';
+import {NodeService} from './demo/service/nodeservice';*/
 
 @NgModule({
     imports: [
@@ -160,22 +169,29 @@ import {NodeService} from './demo/service/nodeservice';
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         AppComponent,
         AppMenuComponent,
         AppSubMenuComponent,
-        DashboardDemoComponent,
+        /*DashboardDemoComponent,
         FormsDemoComponent,
         DataDemoComponent,
         EmptyDemoComponent,
         FileDemoComponent,
-        UtilsDemoComponent,
+        UtilsDemoComponent,*/
+        AlertComponent,
+        HomeComponent,
+        LoginComponent,
+        RegisterComponent,
     ],
     providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         {provide: LocationStrategy, useClass: HashLocationStrategy},
-        CarService, CountryService, EventService, NodeService
+        /*CarService, CountryService, EventService, NodeService*/
     ],
     bootstrap: [AppComponent]
 })

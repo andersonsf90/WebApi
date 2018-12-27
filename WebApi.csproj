@@ -4,9 +4,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="angular-6-jwt-authentication\**" />
+    <Compile Remove="angular-7-jwt-authentication\**" />
+    <Compile Remove="angular-7-registration-login\**" />
+    <Compile Remove="omega-ng-7.0.0\**" />
     <Content Remove="angular-6-jwt-authentication\**" />
+    <Content Remove="angular-7-jwt-authentication\**" />
+    <Content Remove="angular-7-registration-login\**" />
+    <Content Remove="omega-ng-7.0.0\**" />
     <EmbeddedResource Remove="angular-6-jwt-authentication\**" />
+    <EmbeddedResource Remove="angular-7-jwt-authentication\**" />
+    <EmbeddedResource Remove="angular-7-registration-login\**" />
+    <EmbeddedResource Remove="omega-ng-7.0.0\**" />
     <None Remove="angular-6-jwt-authentication\**" />
+    <None Remove="angular-7-jwt-authentication\**" />
+    <None Remove="angular-7-registration-login\**" />
+    <None Remove="omega-ng-7.0.0\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />
