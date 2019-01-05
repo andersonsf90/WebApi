@@ -1,6 +1,8 @@
-<div class="wrapper" [ngClass]="{'sidebar-inactive-l':menuInactiveDesktop, 'sidebar-active-m':menuActiveMobile}">
+<div class="wrapper"
+[ngClass]="{'sidebar-inactive-l':menuInactiveDesktop, 'sidebar-active-m':menuActiveMobile}"
+>
 
-        <div class="topbar clearfix">
+        <div class="topbar clearfix" [style.display]="!currentUser?'none':'inherit'">
             <a id="omega-menu-button" href="#" (click)="toggleMenu($event)">
                 <span class="fa fa-bars"></span>
             </a>
@@ -19,16 +21,16 @@
                 </a>
             </div>
         </div>
-        <div class="sidebar" (click)="onMenuClick()">
+        <div class="sidebar" (click)="onMenuClick()" [style.display]="!currentUser?'none':'inherit'">
             <p-scrollPanel #scroller [style]="{height: '100%'}">
                 <div class="sidebar-scroll-content">
                     <div class="logo">
-                        <img src="/src/layout/images/logo.png" alt="" width="113">
+                        <img src="../assets/layout/images/logo.png" alt="" width="113">
                     </div>
                     <div class="profile">
                         <img src="assets/layout/images/profile.png" alt="" />
                         <a id="profile-button" href="#" (click)="toggleProfile($event)">
-                            <span class="username">Peggy Olson</span>
+                            <span class="username">{{currentUser?.firstName}}</span>
                             <i class="fa fa-fw fa-cog"></i>
                         </a>
                         <ul [@submenu]="profileActive ? 'visible' : 'hidden'">
