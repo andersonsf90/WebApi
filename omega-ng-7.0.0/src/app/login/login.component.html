@@ -12,11 +12,11 @@
             <div class="ui-g ui-fluid">
 			<div class="ui-g-12">
                 <div class="form-group">
-				<input type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget" formControlName="username" placeholder="Username"
-				[ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-				<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-					<div *ngIf="f.username.errors.required">Username is required</div>
-				</div>
+					<input type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget" formControlName="username" placeholder="Username"
+					[ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+					<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+						<div *ngIf="f.username.errors.required">Username is required</div>
+					</div>
 				</div>
 			</div>
 			<div class="ui-g-12">
