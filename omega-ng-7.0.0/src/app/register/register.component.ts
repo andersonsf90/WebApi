@@ -5,7 +5,21 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, UserService, AuthenticationService } from '@/_services';
 
-@Component({templateUrl: 'register.component.html'})
+@Component({
+    templateUrl: 'register.component.html',
+    styles: [`
+    #login-wrapper #login-container {
+        margin-top: 20px;
+        box-sizing: border-box;
+        height: 400px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        padding: 2em;
+        text-align: center;
+        color: #4f575b;
+      }
+      `]
+})
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
