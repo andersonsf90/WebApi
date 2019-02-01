@@ -2,11 +2,12 @@
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-import { User } from '@/_models';
-import { UserService, AuthenticationService } from '@/_services';
+import { User } from '@/_models/user';
+import { UserService } from '@/_services/user.service';
+import { AuthenticationService } from '@/_services/authentication.service';
 
 @Component({ templateUrl: 'home.component.html' })
-export class HomeComponent implements OnInit, OnDestroy {
+export class InicioComponent implements OnInit, OnDestroy {
     currentUser: User;
     currentUserSubscription: Subscription;
     users: User[] = [];
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        //document.body.className = '';
         this.loadAllUsers();
     }
 

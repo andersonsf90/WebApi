@@ -1,25 +1,14 @@
+import { Component, AfterViewInit, OnDestroy, ViewChild, Renderer2, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Router } from '@angular/router';
+import { User } from '@/_models/user';
+import { ScrollPanel} from 'primeng/scrollpanel';
+
 import { first } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import {
-    Component,
-    AfterViewInit,
-    OnDestroy,
-    ViewChild,
-    Renderer2,
-    OnInit
-} from '@angular/core';
-import {
-    trigger,
-    state,
-    style,
-    transition,
-    animate
-} from '@angular/animations';
-import { ScrollPanel } from 'primeng/primeng';
 
-import { Router } from '@angular/router';
-import { User } from '@/_models';
-import { AuthenticationService, UserService } from '@/_services';
+import { AuthenticationService } from '@/_services/authentication.service';
+import { UserService } from '@/_services/user.service';
 
 @Component({
     selector: 'app-home',
@@ -90,7 +79,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnInit() {
         document.body.className = '';
-        this.loadAllUsers();
     }
     ngAfterViewInit() {
         setTimeout(() => {
@@ -190,23 +178,4 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         this.router.navigate(['/login']);
     }
 
-
-
-    deleteUser(id: number) {
-        this.userService
-            .delete(id)
-            .pipe(first())
-            .subscribe(() => {
-                this.loadAllUsers();
-            });
-    }
-
-    private loadAllUsers() {
-        this.userService
-            .getAll()
-            .pipe(first())
-            .subscribe(users => {
-                this.users = users;
-            });
-    }
 }

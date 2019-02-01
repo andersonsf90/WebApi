@@ -1,0 +1,19 @@
+<div class="topbar clearfix">
+    <a id="omega-menu-button" href="#" (click)="toggleMenu($event)">
+        <span class="fa fa-bars"></span>
+    </a>
+    <span class="topbar-title"></span>
+    <a id="options-menu-button" href="#" (click)="toggleTopMenu($event)">
+        <span class="fa fa-ellipsis-h"></span>
+    </a>
+    <div id="topbar-icons" class="animated" [ngClass]="{'topbar-icons-visible flipInX':topMenuActive,'flipOutX':topMenuLeaving}">
+         <a href="#">
+            <span class="topbar-item-text">Settings</span>
+            <span class="topbar-icon fa fa-gear"></span>
+        </a>
+        <a href="#">
+            <span class="topbar-item-text">User</span>
+            <span class="topbar-icon fa fa-user"></span>
+        </a>
+    </div>
+</div>

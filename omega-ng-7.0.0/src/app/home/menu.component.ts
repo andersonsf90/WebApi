@@ -1,7 +1,10 @@
+import { HomeComponent } from './home.component';
+
+import { Router } from '@angular/router';
 import {Component, Input, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import {MenuItem} from 'primeng/primeng';
-import {AppComponent} from './app.component';
+
 
 @Component({
     selector: 'app-menu',
@@ -11,7 +14,7 @@ import {AppComponent} from './app.component';
         </div>
     `
 })
-export class AppMenuComponent implements OnInit {
+export class MenuComponent implements OnInit {
 
     model: MenuItem[];
 
@@ -82,7 +85,7 @@ export class AppMenuComponent implements OnInit {
         ])
     ]
 })
-export class AppSubMenuComponent {
+export class SubMenuComponent {
 
     @Input() item: MenuItem;
 
@@ -90,11 +93,13 @@ export class AppSubMenuComponent {
 
     @Input() visible: boolean;
 
+
+
     activeIndex: number;
 
     _parentActive: boolean;
 
-    constructor(public app: AppComponent) {}
+    constructor(public app: HomeComponent, public router: Router) {}
 
     itemClick(event: Event, item: MenuItem, index: number) {
         if (item.disabled) {
