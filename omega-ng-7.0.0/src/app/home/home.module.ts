@@ -2,7 +2,7 @@ import { RouterModule } from '@angular/router';
 import {NgModule} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {BrowserModule} from '@angular/platform-browser';
+
 import {LocationStrategy, HashLocationStrategy, CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
@@ -19,7 +19,6 @@ import { MenuComponent, SubMenuComponent } from './menu.component';
     imports: [
         CommonModule,
 
-        BrowserModule,
         FormsModule,
         RouterModule,
 

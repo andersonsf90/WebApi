@@ -1,3 +1,4 @@
+import { HomeModule } from './home/home.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -10,7 +11,7 @@ const appRoutes = [
     { path: 'register', component: RegisterComponent },
     { path: '', loadChildren: '../app/home/home.module#HomeModule'},
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    // { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
